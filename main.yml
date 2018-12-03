@@ -1,0 +1,27 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  gather_facts: false
+  vars:
+    - become_user: no
+  roles:
+# ABC Install Apache
+    - role: ansible_apache
+      tags:
+      - abc_apache
+      - abc_all
+# ABC Install mysql
+    - role: ansible_mysql
+      tags:
+      - abc_mysql
+      - abc_all
+# ABC Install yum
+    - role: ansible_yum
+      tags:
+      - abc_yum
+      - abc_all
+# ABC Install firewall
+    - role: ansible_firewall
+      tags:
+      - abc_firewall
+      - abc_all

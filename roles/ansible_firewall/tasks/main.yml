@@ -1,0 +1,24 @@
+---
+# tasks file for ansible_firewall
+
+# enabling firewall port 443
+- name: enabling firewall port 443
+  firewalld:
+   port: 443/tcp
+   permanent: true
+   state: enabled
+
+# enabling firewall port 80
+- name: enabling firewall port 80
+  firewalld:
+   port: 80/tcp
+   permanent: true
+   state: enabled
+
+# enabling mysql port on localhost
+- name: enabling firewall port for mysql
+  firewalld:
+   source: 127.0.0.1
+   port: 3306/tcp
+   permanent: true
+   state: enabled

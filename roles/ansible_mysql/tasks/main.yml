@@ -1,0 +1,19 @@
+---
+# tasks file for ansible_mysql
+- name: Download MySQL Community Repo
+  yum:
+    name: http://repo.mysql.com/mysql-community-release-el7-7.noarch.rpm
+    state: present
+- name: install mysql
+  yum:
+    name: mysql-server
+    state: present
+- name: Install MySQL-python, this is required for the task remove anonymous user
+  yum:
+    name: MySQL-python
+    state: present
+- name: Start MySQL Server and enable it
+  service:
+    name: mysqld
+    state: started
+    enabled: yes
